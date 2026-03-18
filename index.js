@@ -30,4 +30,5 @@ app.use('/api/conv', chat)
 app.use('/api/session', session)
 app.listen(Port, () => {
     console.log(`Server is Listening on http://localhost:${Port}`)
+    console.log(`FrontEnd is Listening on ${process.env.CLIENT_PORT}`)
 })
