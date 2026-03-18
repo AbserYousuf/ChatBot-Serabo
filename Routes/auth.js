@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
+const OtpEMail = require("./Routes/OtpEmail.js")
 const resetkey = process.env.RESET_KEY
 const OtpEmail = require('./OtpEmail')
 const rateLimit = require('express-rate-limit')
@@ -78,7 +79,7 @@ router.post('/signup', Signup, [
             await sendEmail({
                 to: email,
                 subject: "Welcome to Our App!",
-                html: OtpEmail(backotp, name)
+                html:`THanks For Choosing Serabo AI. Your Account has Been Created SuccessFully`
             })
 
         } catch (error) {
@@ -242,8 +243,8 @@ router.post('/forgot', Forgot, [
             const name = user.name
             await sendEmail({
                 to: email,
-                subject: "OTP RESET REQUEST!",
-                html: `<h1>Hey ${name}!</h1><p>Your Otp is ${backotp}.</p>`
+                subject: "Your Serabo AI Verification Code",
+                html:  OtpEmail(backotp, name)
             })
             res.cookie('resetToken', ResetToken, {
                 httpOnly: true,
