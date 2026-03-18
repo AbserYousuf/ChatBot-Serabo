@@ -76,8 +76,8 @@ const welcomeEmailHtml = (name) => `
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
                 <td align="center">
-                  <a href="https://sereboaai-two.vercel.app/chat" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white;text-decoration:none;border-radius:12px;font-size:14.5px;font-weight:600;letter-spacing:0.3px;box-shadow:0 4px 15px rgba(99,102,241,0.4);">
-                    Start Chatting →
+                  <a href="https://sereboaai-two.vercel.app/login" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white;text-decoration:none;border-radius:12px;font-size:14.5px;font-weight:600;letter-spacing:0.3px;box-shadow:0 4px 15px rgba(99,102,241,0.4);">
+                    Login Now →
                   </a>
                 </td>
               </tr>
