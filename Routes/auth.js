@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 const OtpEMail = require("./OtpEmail")
+const welcomeEmailHtml=require("./welcomeEmailHtml")
 const resetkey = process.env.RESET_KEY
 const OtpEmail = require('./OtpEmail')
 const rateLimit = require('express-rate-limit')
@@ -78,8 +79,8 @@ router.post('/signup', Signup, [
         try {
             await sendEmail({
                 to: email,
-                subject: "Welcome to Our App!",
-                html:`THanks For Choosing Serabo AI. Your Account has Been Created SuccessFully`
+                subject: "Welcome to Our Serabo AI!",
+                html:welcomeEmailHtml(name)
             })
 
         } catch (error) {
