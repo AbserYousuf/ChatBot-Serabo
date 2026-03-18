@@ -249,8 +249,9 @@ router.post('/forgot', Forgot, [
             res.cookie('resetToken', ResetToken, {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
-                sameSite: 'strict',
-                maxAge: 10 * 60 * 1000
+                sameSite: 'lax',
+                maxAge: 10 * 60 * 1000,
+                path:'/'
             })
             return res.status(200).json({
                 success: true,
@@ -382,7 +383,9 @@ router.post('/reset', resetToken, [
         res.clearCookie('resetToken', {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict'
+            sameSite: 'lax',
+            path:'/'
+            
         })
         return res.status(200).json({
             success: true,
