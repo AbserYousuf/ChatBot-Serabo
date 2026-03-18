@@ -40,7 +40,14 @@ router.post('/signup', Signup, [
     }
     try {
         const { name, email, password, username } = req.body
-        const result = await validate(email)
+         const result = await validate({
+    email: email,
+    validateRegex: true,
+    validateMx: true,
+    validateTypo: false,
+    validateDisposable: false,
+    validateSMTP: false,
+  })
         if (!result.valid) {
             return res.status(400).json({
                 success: false,
@@ -197,7 +204,14 @@ router.post('/forgot', Forgot, [
     }
     try {
         const { email } = req.body
-        const checkemail = await validate(email)
+   const checkemail= await validate({
+    email: email,
+    validateRegex: true,
+    validateMx: true,
+    validateTypo: false,
+    validateDisposable: false,
+    validateSMTP: false,
+  })
         if (!checkemail.valid) {
             return res.status(400).json({
                 success: false,
