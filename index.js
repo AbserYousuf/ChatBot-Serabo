@@ -19,6 +19,7 @@ app.use(cors({
         "Authorization",
         "Cookie"
     ],
+     exposedHeaders: ["set-cookie"],
     credentials: true
 }))
 app.use(express.json())
