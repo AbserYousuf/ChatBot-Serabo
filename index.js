@@ -9,6 +9,7 @@ const chat = require('./Routes/conv')
 const session = require('./Routes/session')
 
 const app = express()
+app.set('trust proxy', 1) 
 app.use(cors({
     origin: process.env.CLIENT_PORT,
     methods: ["GET", "POST", "PUT", "DELETE", "UPDATE"],
