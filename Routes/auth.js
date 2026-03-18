@@ -164,7 +164,7 @@ router.post('/login', LoginLimit, [
         }
         res.cookie('refreshtoken', refreshtoken, {
             httpOnly: true,   // JS can't access it
-            secure: process.env.NODE_ENV === 'production', // HTTPS only
+            secure: true, // HTTPS only
             sameSite:'none',
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
             path: '/'
@@ -248,7 +248,7 @@ router.post('/forgot', Forgot, [
             })
             res.cookie('resetToken', ResetToken, {
                 httpOnly: true,
-                secure: process.env.NODE_ENV === 'production',
+                secure: true,
                  sameSite: 'none',
                 maxAge: 10 * 60 * 1000,
                 path:'/'
@@ -382,7 +382,7 @@ router.post('/reset', resetToken, [
         await User.findByIdAndUpdate(userId, { password: newPassword }, { new: true })
         res.clearCookie('resetToken', {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
+            secure:true,
           sameSite: 'none',
             path:'/'
             
