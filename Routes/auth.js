@@ -165,7 +165,7 @@ router.post('/login', LoginLimit, [
         res.cookie('refreshtoken', refreshtoken, {
             httpOnly: true,   // JS can't access it
             secure: process.env.NODE_ENV === 'production', // HTTPS only
-            sameSite: 'lax',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
             path: '/'
         })
@@ -249,7 +249,7 @@ router.post('/forgot', Forgot, [
             res.cookie('resetToken', ResetToken, {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
-                sameSite: 'lax',
+                 sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
                 maxAge: 10 * 60 * 1000,
                 path:'/'
             })
